@@ -1,11 +1,45 @@
 <template>
     <style>
-        p {
-            color: orange;
+        :host {
+            color: #222;
+        }
+        ::slotted(img) {
+            max-width: 70px;
+        }
+        .img-container{
+            background-image: url(http://www.stilinberlin.de/wp/wp-content/uploads/2014/06/stilinberlin-shakespeareandsons-bagels-2.jpg);
+            background-size: cover;
+            min-height: 200px
+        }
+        .flex-container{
+            background-color: #fff;
+            display: flex;
+        }
+        .flex-item {
+            flex: 0 1 auto;
+        }
+        .flex-grow-0{
+            flex-grow: 0 !important;
+        }
+        .flex-grow-1{
+            flex-grow: 1 !important;
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
         }
     </style>
-    
-    <p>I'm in Shadow DOM. My markup was stamped from a &lt;template&gt;.</p>
+    <div class="img-container"></div>
+    <section class="flex-container ">
+        <div class="flex-item">
+            <slot name="profile"></slot>
+        </div>
+        <div class="flex-item flex-grow-1 pas">
+            <slot name="location"></slot>
+        </div>
+        <div class="flex-item">
+            <slot name="button"></slot>
+        </div>
+    </section>
 </template>
 
 <script>

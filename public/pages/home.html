@@ -1,10 +1,14 @@
 <template>
-    <h1>Home</h1>
-    <p>Demo page using a path variable</p>
-
     <template-repeater content='[{"firstName": "Bilbo", "lastName": "Baggins"}, {"firstName": "Frodo", "lastName": "Baggins"}, {"firstName": "Samwise", "lastName": "Gamgee"}]'>
-        <p>${firstName} ${lastName}</p>
-        <event-card></event-card>
+        <event-card class="mbs block">
+            <img slot="profile" src="http://paulanca.com/wp-content/uploads/2015/12/Profile-pic-circle-4.png"/>
+            <section slot="location" class="pas">
+                <h3 class="man">${firstName}</h3>
+                <p class="man">${lastName}</p>
+                <p class="man"><i class="fa fa-map-marker" aria-hidden="true"></i> 200m away</p>
+            </section>
+            <button slot="button" class="btn" type="button">Interested</button>
+        </event-card>
     </template-repeater>
 </template>
 

@@ -39,6 +39,12 @@
 .ofv {
   overflow: visible; }
 
+.ofs-x {
+  overflow-x: scroll; }
+
+.ofs-y {
+  overflow-y: scroll; }
+
 .clear {
   clear: both; }
 
@@ -753,6 +759,17 @@ h1, h2, h3, h4, h5, h6 {
 .fw300 {
   font-weight: 300; }
 
+.btn {
+  display: inline-block;
+  font-weight: normal;
+  line-height: 1em;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid solid transparent; }
+
 #main-nav {
   background-color: #222222; }
   #main-nav a {
@@ -768,7 +785,8 @@ body {
   background-color: whitesmoke;
   font-family: 'Roboto', sans-serif;
   background-color: #222222;
-  color: #ffffff; }
+  color: #ffffff;
+  font-size: 14px; }
 
 ::-webkit-scrollbar {
   width: 0px;
@@ -777,7 +795,8 @@ body {
   /* optional: just make scrollbar invisible */ }
 
 .hardware-overflow {
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  -webkit-transform: translate3d(0, 0, 0); }
   .hardware-overflow.vertical {
     overflow-y: scroll; }
 
