@@ -1,20 +1,23 @@
 <template>
-  <style>
-    p { color: orange; }
-  </style>
-  <p>I'm in Shadow DOM. My markup was stamped from a &lt;template&gt;.</p>
+    <style>
+        p {
+            color: orange;
+        }
+    </style>
+    
+    <p>I'm in Shadow DOM. My markup was stamped from a &lt;template&gt;.</p>
 </template>
 
 <script>
     class EventCard extends HTMLElement {
         constructor() {
-          super(); // always call super() first in the ctor.
+            super(); // always call super() first in the ctor.
 
-          let shadowRoot = this.attachShadow({mode: 'open'});
-          const link = document.querySelector('link[id="event-card"]');
-          const template = link.import.querySelector('template');
-          const instance = template.content.cloneNode(true);
-          shadowRoot.appendChild(instance);
+            let shadowRoot = this.attachShadow({mode: 'open'});
+            const link = document.querySelector('link[id="event-card"]');
+            const template = link.import.querySelector('template');
+            const instance = template.content.cloneNode(true);
+            shadowRoot.appendChild(instance);
         }
     };
     customElements.define('event-card', EventCard);
