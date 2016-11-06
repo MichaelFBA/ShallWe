@@ -1,0 +1,44 @@
+//Variables
+$brand-main:         #49D084;
+$brand-secondary:    #FF5252;
+$brand-dark:         #222222;
+$brand-light:        #ffffff;
+
+//Generic
+@import "flex.scss";
+@import "utilities.scss";
+@import "typography.scss";
+
+//Project specifice
+@import "project-scss/navigation.scss";
+
+body,html{
+    margin: 0;
+    height:100%;
+}
+body{
+    background-color: whitesmoke;
+    font-family: 'Roboto', sans-serif;
+    background-color: $brand-dark;
+    color: $brand-light;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+.hardware-overflow{
+    -webkit-overflow-scrolling: touch;
+    &.vertical{
+        overflow-y: scroll;
+    }
+}
+
+a{
+    &:hover,
+    &:active,
+    &:focus{
+        color: $brand-main
+    }
+}

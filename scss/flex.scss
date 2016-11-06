@@ -1,0 +1,28 @@
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+
+    &.vertical{
+        -webkit-flex-direction: column; /* Safari */
+        flex-direction:         column;
+    }
+
+    .flex-item {
+        flex: 0 1 auto;
+
+        &.vertical{
+            -webkit-flex-direction: column; /* Safari */
+            flex-direction:         column;
+            justify-content: center;
+            display: flex;
+        }
+    }
+}
+
+
+.flex-grow-0{
+    flex-grow: 0 !important;
+}
+.flex-grow-1{
+    flex-grow: 1 !important;
+}

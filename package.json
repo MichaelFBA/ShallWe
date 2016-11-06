@@ -1,0 +1,24 @@
+{
+  "name": "shallwe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "node-sass --include-path scss scss/main.scss   public/css/main.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "add-cors-to-couchdb": "0.0.6",
+    "app-router": "git+https://github.com/erikringsmuth/app-router.git",
+    "express": "^4.14.0",
+    "font-awesome": "^4.7.0",
+    "node-sass": "^3.11.2",
+    "nodemon": "^1.11.0",
+    "pouchdb": "^6.0.7",
+    "pushstate-anchor": "git+https://github.com/erikringsmuth/pushstate-anchor.git",
+    "webcomponentsjs": "^1.0.2"
+  }
+}

@@ -1,0 +1,48 @@
+<template>
+    <h1>Home</h1>
+    <p>Demo page using a path variable</p>
+
+    <template-repeater content='[{"firstName": "Bilbo", "lastName": "Baggins"}, {"firstName": "Frodo", "lastName": "Baggins"}, {"firstName": "Samwise", "lastName": "Gamgee"}]'>
+        <p>${firstName} ${lastName}</p>
+        <event-card></event-card>
+    </template-repeater>
+</template>
+
+<script charset="utf-8">
+    var localDB = new PouchDB('mylocaldb');
+    var remoteDB = new PouchDB('http://localhost:5984/events');
+    remoteDB.info()
+
+    // var doc = {     "_id": "mittens",     "name": "Mittens",     "occupation": "kitten",     "age": 3,     "hobbies": ["playing with balls of yarn", "chasing laser pointers", "lookin' hella cute"] }; db.put(doc) fetch mittens
+    // db.get('mittens').then(function (doc) {     // update their age     doc.age = 4;     // put them back     return db.put(doc); }).then(function () {     // fetch mittens again     return db.get('mittens'); }).then(function (doc) { console.log(doc);
+    // });
+    remoteDB.put({_id: new Date().toJSON(), name: 'Mittens', occupation: 'kitten', cuteness: 9.0}).then(function () {
+        return remoteDB.put({_id: new Date().toJSON(), name: 'Katie', occupation: 'kitten', cuteness: 7.0});
+    }).then(function () {
+        return remoteDB.put({_id: new Date().toJSON(), name: 'Felix', occupation: 'kitten', cuteness: 8.0});
+    }).then(function () {
+        return remoteDB.allDocs({include_docs: true});
+    }).then(function (response) {
+        console.log(response);
+    }).catch(function (err) {
+        console.log(err);
+    });
+
+    //DB Sync
+    localDB.sync(remoteDB, {
+        live: true,
+        retry: true
+    }).on('change', function (change) {
+        console.log('change', change);
+        // yo, something changed!
+    }).on('paused', function (info) {
+        console.log('paused', info);
+        // replication was paused, usually because of a lost connection
+    }).on('active', function (info) {
+        console.log('active', info);
+        // replication was resumed
+    }).on('error', function (err) {
+        console.log('error', err);
+        // totally unhandled error (shouldn't happen)
+    });
+</script>

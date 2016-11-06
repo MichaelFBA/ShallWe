@@ -1,0 +1,9 @@
+#main-nav{
+    background-color: $brand-dark;
+
+    a{
+        color: lighten($brand-dark, 20%);
+        margin: 10px 0px;
+        font-size: 2em;
+    }
+}
