@@ -4,15 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "node-sass --include-path scss scss/main.scss   public/css/main.css",
-    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+    "dev": "concurrently -p \"[{name}]\" -n \"HTTP,JS,SCSS\" -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"node server.js\" \"npm run watch-js\" \"npm run watch-styles\"",
+    "build-styles": "node-sass --include-path scss scss/main.scss   public/css/main.css",
+    "watch-styles": "nodemon -e scss -x \"npm run build-styles\"",
+    "build-js": "babel src --out-file public/js/script-compiled.js",
+    "watch-js": "nodemon -e js --ignore public/ -x \"npm run build-js\""
   },
-  "author": "",
+  "author": "Michael Bell",
   "license": "ISC",
   "devDependencies": {
     "add-cors-to-couchdb": "0.0.6",
     "app-router": "git+https://github.com/erikringsmuth/app-router.git",
+    "babel-cli": "~6.18.0",
+    "babel-preset-es2015": "~6.18.0",
+    "concurrently": "~3.1.0",
     "express": "^4.14.0",
     "font-awesome": "^4.7.0",
     "node-sass": "^3.11.2",
